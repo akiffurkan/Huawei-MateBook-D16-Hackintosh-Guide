@@ -38,7 +38,7 @@ Intel 12. ve 13. Nesil hibrit (P-Core + E-Core) işlemciler Apple tarafından hi
 | **Bellek (RAM)** | 16 GB LPDDR4X 4267 MHz (Çift Kanal) | 🟢 **Çalışıyor** | Sorunsuz algılanıyor, bellek sızıntısı yok |
 | **Depolama** | 1 TB M.2 PCIe 4.0 NVMe SSD | 🟢 **Çalışıyor** | `NVMeFix.kext` ile APFS dosya sistemi tam hızda |
 | **Kablosuz Ağ (Wi-Fi)** | Intel® Wi-Fi 6 AX201 160MHz (`8086:51F1`) | 🟢 **Çalışıyor** | `AirportItlwm.kext` ile yerel macOS Wi-Fi menüsü |
-| **Bluetooth** | Intel® Wireless Bluetooth (`8087:0026`) | 🟢 **Çalışıyor** | `IntelBluetoothFirmware.kext` + `BlueToolFixup.kext` |
+| **Bluetooth** | Intel® Wireless Bluetooth (`8087:0026`) | 🟡 **Geliştiriliyor** | Aygıt algılanıyor ancak açıldığında hemen geri kapanma sorunu mevcut; sonraki commit'lerde düzeltilecek |
 | **Batarya** | 70,000 mWh ACPI Batarya (`ACPI\PNP0C0A`) | 🟢 **Çalışıyor** | `ECEnabler.kext` ile pil yüzdesi ve şarj durumu menü çubuğunda |
 | **Klavye** | Dahili PS/2 Klavye ve Aydınlatma | 🟢 **Çalışıyor** | `VoodooPS2Controller.kext` ile tam işlevsel |
 | **Parlaklık Tuşları** | F1 / F2 Ekran Parlaklık Kısayolları | 🟢 **Çalışıyor** | `BrightnessKeys.kext` ile yerel macOS parlaklık animasyonu |
@@ -54,7 +54,7 @@ Intel 12. ve 13. Nesil hibrit (P-Core + E-Core) işlemciler Apple tarafından hi
 - ✅ **Intel Core i9 Hibrit Çekirdek Gücü:** `CpuTopologyRebuild.kext` sayesinde macOS 6 P-çekirdeği ve 8 E-çekirdeği doğru algılar; takılma veya gecikme olmadan sistem çok seri çalışır.
 - ✅ **Doğru İşlemci İsmi Görünümü:** "Bu Mac Hakkında" ekranında işlemci adı `3 GHz 13th Gen Intel(R) Core(TM) i9-13900H` olarak kusursuz görünür (`RestrictEvents.kext` + `revcpu=1`).
 - ✅ **Batarya Göstergesi:** `ECEnabler.kext` katıştırılmış denetleyiciyi (EC) doğrudan bağlar; pil simgesi ve şarj durumu stabil çalışır.
-- ✅ **Wi-Fi 6 ve Bluetooth 5.2:** Web sayfaları, indirmeler ve bluetooth çevre birimleri (kulaklık, fare) sorunsuz bağlanır.
+- ✅ **Wi-Fi 6 AX201:** `AirportItlwm.kext` ile internete sorunsuz bağlantı, yüksek hız ve yerel macOS menü çubuğu entegrasyonu.
 - ✅ **Yüksek Hızlı PCIe 4.0 NVMe:** APFS dosya sistemi ile tam uyumlu ve hızlı açılış.
 - ✅ **Yerel Çözünürlük ve Ekran Parlaklığı:** 1920x1200 yerel panel çözünürlüğü ve klavyeden parlaklık kontrolü.
 - ✅ **Çift İşletim Sistemi (Dual Boot):** Windows 11 ve macOS birbirine zarar vermeden aynı NVMe üzerinde barınır.
@@ -69,6 +69,10 @@ Intel 12. ve 13. Nesil hibrit (P-Core + E-Core) işlemciler Apple tarafından hi
    - Bu nedenle `VoodooI2C` sürücüsü aygıtı göremiyordu. Yazdığımız `SSDT-TPD0.aml` tablosu ile aygıt doğru veriyoluna taşınmış ve orijinal aygıt susturulmuştur. İlerleyen güncellemelerde GPIO kesmesi tam optimize edilecektir.
 3. **Dahili Hoparlör / Mikrofon:**
    - Conexant CX8200 yongasının macOS AppleALC layout kimlikleri (Layout 3, 11, 21, 28) test edilmektedir.
+4. **Bluetooth Açılıp Kapanma Sorunu:**
+   - Intel Bluetooth modülü sistem tarafından tanınmaktadır (`IntelBluetoothFirmware.kext` + `BlueToolFixup.kext`).
+   - Ancak Ayarlar veya Denetim Merkezi'nden Bluetooth anahtarı açılmak istendiğinde açılıp birkaç saniye içinde kendiliğinden geri kapanmaktadır.
+   - Bu durum modern macOS (Sonoma/Sequoia/Tahoe) Bluetooth yığınında firmware yükleme zamanlaması veya USB port dahili eşitlemesinden kaynaklanmaktadır; ilerleyen commit'lerde düzenlenecektir.
 
 ---
 
