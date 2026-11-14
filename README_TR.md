@@ -34,7 +34,7 @@ Intel 12. ve 13. Nesil hibrit (P-Core + E-Core) işlemciler Apple tarafından hi
 | :--- | :--- | :---: | :--- |
 | **Model** | Huawei MateBook D 16 (2023/2024, MCLG-XX) | 🟢 | UEFI OpenCore tam uyumlu yapılandırma |
 | **İşlemci (CPU)** | Intel® Core™ i9-13900H (14 Çekirdek / 20 İzlek: 6P + 8E) | 🟢 **Çalışıyor** | `CpuTopologyRebuild.kext` ile hibrit çekirdek zamanlaması tam performans |
-| **Dahili Grafik (iGPU)** | Intel® Iris® Xe Graphics 96EU (`8086:A7A0`) | 🟡 **Temel Görüntü** | 1920x1200 yerel çözünürlük; 3D/Metal hızlandırma WhateverXe'nin yeni sürümünü bekliyor |
+| **Dahili Grafik (iGPU)** | Intel® Iris® Xe Graphics 96EU (`8086:A7A0`) | 🟡 **Geliştiriliyor** | 1920x1200 yerel çözünürlük; Metal 3 & QE/CI sürücüsü aktif geliştirme aşamasında: [WhateverXe-0xA7A0](https://github.com/akiffurkan/WhateverXe-0xA7A0) |
 | **Bellek (RAM)** | 16 GB LPDDR4X 4267 MHz (Çift Kanal) | 🟢 **Çalışıyor** | Sorunsuz algılanıyor, bellek sızıntısı yok |
 | **Depolama** | 1 TB M.2 PCIe 4.0 NVMe SSD | 🟢 **Çalışıyor** | `NVMeFix.kext` ile APFS dosya sistemi tam hızda |
 | **Kablosuz Ağ (Wi-Fi)** | Intel® Wi-Fi 6 AX201 160MHz (`8086:51F1`) | 🟢 **Çalışıyor** | `AirportItlwm.kext` ile yerel macOS Wi-Fi menüsü |
@@ -61,9 +61,9 @@ Intel 12. ve 13. Nesil hibrit (P-Core + E-Core) işlemciler Apple tarafından hi
 
 ### 🟡 Bilinen Durumlar ve Geliştirme Süreci (Açık ve Şeffaf):
 1. **Intel Iris Xe Grafik Hızlandırma:**
-   - Ekran VESA / Framebuffer modunda 1920x1200 çözünürlükle akıcı olarak çalışır.
-   - WhateverXe geliştiricileri şu an Tiger Lake (11. Nesil) desteğini tamamlamış olup, Alder Lake ve Raptor Lake (12./13. Nesil) desteği üzerinde çalışmaktadır.
-   - Yaptığımız ikili tersine mühendislik analizinde Metal 3D kütüphanelerinin başarıyla bağlandığı doğrulanmış, ancak eDP dahili panel sinyal kayıtlarının resmi WhateverXe güncellemesiyle eşleşmesi beklenmektedir. *Yeni sürüm çıktığında EFI'ye doğrudan sürücü eklenerek donanım hızlandırma açılacaktır.*
+   - Ekran 1920x1200 yerel panel çözünürlüğünde ve klavyeden tam parlaklık kontrolüyle akıcı bir şekilde çalışmaktadır.
+   - Bu cihaza özel **Metal 3 ve 3D QE/CI donanım hızlandırması**, geliştirdiğimiz özel açık kaynak sürücü çatallamasında (**[WhateverXe-0xA7A0](https://github.com/akiffurkan/WhateverXe-0xA7A0)**) aktif geliştirme aşamasındadır.
+   - *Durum:* Görüntü boru hattı (display pipe), arka ışık kayıtları ve framebuffer entegrasyonu tamamlanmış olup; Metal bağlam yayınlama (context publishing) ve hızlandırma optimizasyonu testleri devam etmektedir.
 2. **FocalTech FTCS1000 Touchpad:**
    - Huawei'nin fabrika ACPI tablosunda Touchpad aygıtı (`TPD0`), I2C kontrolcüsünün (`_SB.PC00.I2C0`) altına değil, yanlışlıkla doğrudan anakart köküne konulmuştur.
    - Bu nedenle `VoodooI2C` sürücüsü aygıtı göremiyordu. Yazdığımız `SSDT-TPD0.aml` tablosu ile aygıt doğru veriyoluna taşınmış ve orijinal aygıt susturulmuştur. İlerleyen güncellemelerde GPIO kesmesi tam optimize edilecektir.

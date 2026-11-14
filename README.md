@@ -26,7 +26,7 @@
 | :--- | :--- | :---: | :--- |
 | **Model** | Huawei MateBook D 16 (2023 / 2024, MCLG-XX) | 🟢 | Full UEFI OpenCore setup |
 | **CPU** | 13th Gen Intel® Core™ i9-13900H (14C / 20T: 6P + 8E) | 🟢 **Working** | Full heterogenous scheduling via `CpuTopologyRebuild.kext` |
-| **iGPU** | Intel® Iris® Xe Graphics 96EU (`8086:A7A0`) | 🟡 **Framebuffer** | 1920x1200 native resolution; 3D/Metal acceleration awaiting upcoming WhateverXe ADLP release |
+| **iGPU** | Intel® Iris® Xe Graphics 96EU (`8086:A7A0`) | 🟡 **In Development** | 1920x1200 native display; Metal 3 & QE/CI driver under active development at [WhateverXe-0xA7A0](https://github.com/akiffurkan/WhateverXe-0xA7A0) |
 | **RAM** | 16 GB LPDDR4X 4267 MHz (Dual Channel) | 🟢 **Working** | Fully recognized & stable |
 | **Storage** | 1 TB M.2 PCIe 4.0 NVMe SSD | 🟢 **Working** | Native APFS support via `NVMeFix.kext` |
 | **Wi-Fi** | Intel® Wi-Fi 6 AX201 160MHz (`8086:51F1`) | 🟢 **Working** | Native Airport interface via `AirportItlwm.kext` |
@@ -53,9 +53,9 @@
 
 ### 🟡 Work In Progress / Known Limitations:
 - **Intel Iris Xe Hardware Acceleration:**
-  - Standard VESA/Basic Framebuffer runs cleanly with smooth UI rendering at native resolution.
-  - WhateverXe 0.7.0 officially enables Tiger Lake (TGL). Our binary reverse engineering experiments confirmed that Metal 3D hooks load, but Alder Lake-P / Raptor Lake-H internal panel modeset registers require the upcoming upstream WhateverXe release.
-  - *No action needed from your side; official WhateverXe updates will drop right in!*
+  - Standard Framebuffer runs cleanly at native 1920x1200 resolution with full brightness control.
+  - Dedicated **Metal 3 & QE/CI hardware acceleration** for this specific iGPU (`0xA7A0`, 96 EU) is actively being developed and maintained in our custom fork: **[WhateverXe-0xA7A0](https://github.com/akiffurkan/WhateverXe-0xA7A0)**.
+  - *Status:* Experimental / in active development. Display pipe, backlight registers, and framebuffer handoff are fully operational; Metal context publishing is currently being stabilized.
 - **FocalTech FTCS1000 Touchpad:**
   - Huawei's factory DSDT misplaces `TPD0` directly under `\_SB.PC00` instead of the standard I2C host controller (`\_SB.PC00.I2C0`).
   - We engineered a dedicated ACPI bridge (`SSDT-TPD0.aml`) and disabled the original table device with `_STA -> XSTA` patch. Ongoing tuning in upcoming commits.
