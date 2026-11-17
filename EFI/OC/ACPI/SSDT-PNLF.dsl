@@ -5,7 +5,7 @@
  * 
  * Disassembling to symbolic ASL+ operators
  *
- * Disassembly of H:/EFI/OC/ACPI/SSDT-PNLF.aml
+ * Disassembly of D:/Hackintosh D16/repo_staging/EFI/OC/ACPI/SSDT-PNLF.aml
  *
  * Original Table Header:
  *     Signature        "SSDT"
