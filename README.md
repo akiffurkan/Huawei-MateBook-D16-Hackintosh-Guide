@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/macOS-Sonoma%20%7C%20Sequoia%20%7C%20Tahoe-blue?style=for-the-badge&logo=apple&logoColor=white" alt="macOS Versions"/>
   <img src="https://img.shields.io/badge/OpenCore-1.0.4+-brightgreen?style=for-the-badge" alt="OpenCore Version"/>
   <img src="https://img.shields.io/badge/Architecture-Raptor%20Lake--H-orange?style=for-the-badge&logo=intel&logoColor=white" alt="Architecture"/>
-  <img src="https://img.shields.io/badge/Status-Stable%20Daily%20Usable-success?style=for-the-badge" alt="Status"/>
+  <img src="https://img.shields.io/badge/Status-Fully%20Accelerated%20%26%20Working-success?style=for-the-badge" alt="Status"/>
 </p>
 
 ---
@@ -20,57 +20,56 @@
 
 ---
 
-## 💻 Hardware Specifications
+## 📸 Proof of Success & Screenshots
+
+<p align="center">
+  <img src="docs/screenshot_desktop_gpu_metal.jpg" width="49%" alt="macOS Tahoe on MateBook D16 - Intel Iris Xe 1536MB Metal 2"/>
+  <img src="docs/screenshot_control_center_brightness_wifi.jpg" width="49%" alt="Control Center - Native Wi-Fi & Brightness Slider"/>
+</p>
+
+*Above: macOS Tahoe running with full QE/CI hardware graphics acceleration (Metal 2, 1536 MB VRAM, 1920x1200 native display) on Intel Core i9-13900H, native menu bar Wi-Fi (no HeliPort), and native Control Center brightness slider via WhateverXe 0.8.3 VESA AUX.*
+
+---
+
+## 💻 Hardware Specifications & Working Status
 
 | Component | Technical Details | macOS Status | Notes |
 | :--- | :--- | :---: | :--- |
 | **Model** | Huawei MateBook D 16 (2023 / 2024, MCLG-XX) | 🟢 | Full UEFI OpenCore setup |
 | **CPU** | 13th Gen Intel® Core™ i9-13900H (14C / 20T: 6P + 8E) | 🟢 **Working** | Full heterogenous scheduling via `CpuTopologyRebuild.kext` |
-| **iGPU** | Intel® Iris® Xe Graphics 96EU (`8086:A7A0`) | 🟡 **In Development** | 1920x1200 native display; Metal 3 & QE/CI driver under active development at [WhateverXe-0xA7A0](https://github.com/akiffurkan/WhateverXe-0xA7A0) |
+| **iGPU** | Intel® Iris® Xe Graphics 96EU (`8086:A7A0`) | 🟢 **Working** | **Full QE/CI & Metal 2 acceleration**, 1536 MB VRAM, 1920x1200 native internal display powered by WhateverXe 0.8.3 |
+| **Display Brightness** | Internal eDP Display Backlight Slider | 🟢 **Working** | **Native Control Center slider & F1/F2 keys** via WhateverXe 0.8.3 VESA AUX backlight control |
+| **Sleep / Wake** | Lid Close / Open (Hall Sensor) & Display Sleep | 🟢 **Working** | Hall effect sensor detects lid closure, system enters sleep and wakes up instantly without black screen |
+| **Wi-Fi** | Intel® Wi-Fi 6 AX201 160MHz (`8086:51F1`) | 🟢 **Working** | **Native macOS Menu Bar & Control Center Wi-Fi** via `AirportItlwm.kext` + `AMFIPass.kext` (NO HeliPort needed) |
+| **Bluetooth** | Intel® Wireless Bluetooth (`8087:0026`) | 🟢 **Working** | Native Control Center switch & pairing via `IntelBluetoothFirmware` + `BlueToolFixup` |
 | **RAM** | 16 GB LPDDR4X 4267 MHz (Dual Channel) | 🟢 **Working** | Fully recognized & stable |
 | **Storage** | 1 TB M.2 PCIe 4.0 NVMe SSD | 🟢 **Working** | Native APFS support via `NVMeFix.kext` |
-| **Wi-Fi** | Intel® Wi-Fi 6 AX201 160MHz (`8086:51F1`) | 🟢 **Working** | Native Airport interface via `AirportItlwm.kext` |
-| **Bluetooth** | Intel® Wireless Bluetooth (`8087:0026`) | 🟡 **WIP / Issue** | Detected via `IntelBluetoothFirmware` + `BlueToolFixup`, but switch toggles off after enabling; fix in progress |
 | **Battery** | 70,000 mWh ACPI Battery (`ACPI\PNP0C0A`) | 🟢 **Working** | Percentage & charging status functional with `ECEnabler.kext` |
 | **Keyboard** | Internal PS/2 Keyboard & Backlight | 🟢 **Working** | `VoodooPS2Controller.kext` |
-| **Brightness Keys** | F1 / F2 Function Keys | 🟢 **Working** | Out-of-the-box support with `BrightnessKeys.kext` |
-| **Trackpad** | FocalTech FTCS1000 I2C Precision Trackpad | 🟡 **WIP / Active** | Bridge injected via custom `SSDT-TPD0.aml` under `_SB.PC00.I2C0` |
-| **Audio** | Conexant CX8200 / SN6140 (`14F1:1F87`) on Intel cAVS (`8086:51CA`) | 🟡 **Testing** | AppleALC Layout-ID configuration in progress |
+| **Audio** | Conexant CX8200 / SN6140 (`14F1:1F87`) on Intel cAVS (`8086:51CA`) | 🟢 **Working** | Internal audio output & volume control |
 | **Ports** | USB-C (Data & Power Delivery), USB 3.2 Gen 1, USB 2.0, HDMI | 🟢 **Working** | Mapped via `USBToolBox.kext` + `UTBDefault.kext` |
+| **Trackpad** | FocalTech FTCS1000 I2C Precision Trackpad | 🟡 **WIP** | Custom ACPI bridge injected via `SSDT-TPD0.aml` under `_SB.PC00.I2C0` |
 
 ---
 
-## 🎯 Current Status & Key Highlights
+## 🎯 Key Highlights of This Build
 
-### ⚡ What's Working:
-- ✅ **13th Gen Core i9 Hybrid Architecture:** All 6 Performance Cores and 8 Efficiency Cores (20 threads) correctly scheduled with `CpuTopologyRebuild.kext`.
-- ✅ **CPU Name & Brand String:** Correctly displays `3 GHz 13th Gen Intel(R) Core(TM) i9-13900H` in *About This Mac* via `RestrictEvents.kext` (`revcpu=1`, `revcpuname`).
-- ✅ **Battery Management:** Correctly monitors battery life and AC charging state with `ECEnabler.kext`.
-- ✅ **Intel Wi-Fi 6 AX201:** High-speed wireless connectivity and native macOS Wi-Fi menu bar status via `AirportItlwm.kext`.
-- ✅ **NVMe PCIe Gen 4 Storage:** High-speed read/write performance with `NVMeFix.kext`.
-- ✅ **Display Output:** Sharp native 1920x1200 @ 60Hz display output with functional brightness control.
-- ✅ **Dual-Boot Windows 11 + macOS:** Independent boot with native UEFI entries, isolated EFI structures.
-
-### 🟡 Work In Progress / Known Limitations:
-- **Intel Iris Xe Hardware Acceleration:**
-  - Standard Framebuffer runs cleanly at native 1920x1200 resolution with full brightness control.
-  - Dedicated **Metal 3 & QE/CI hardware acceleration** for this specific iGPU (`0xA7A0`, 96 EU) is actively being developed and maintained in our custom fork: **[WhateverXe-0xA7A0](https://github.com/akiffurkan/WhateverXe-0xA7A0)**.
-  - *Status:* Experimental / in active development. Display pipe, backlight registers, and framebuffer handoff are fully operational; Metal context publishing is currently being stabilized.
-- **FocalTech FTCS1000 Touchpad:**
-  - Huawei's factory DSDT misplaces `TPD0` directly under `\_SB.PC00` instead of the standard I2C host controller (`\_SB.PC00.I2C0`).
-  - We engineered a dedicated ACPI bridge (`SSDT-TPD0.aml`) and disabled the original table device with `_STA -> XSTA` patch. Ongoing tuning in upcoming commits.
-- **Internal Speakers / Microphone:**
-  - Conexant CX8200 codec layout-ids (e.g. 3, 11, 21, 28) currently being verified with `AppleALC.kext`.
-- **Bluetooth Toggling Off:**
-  - Intel Bluetooth controller (`8087:0026`) is detected by `IntelBluetoothFirmware.kext` and `BlueToolFixup.kext`.
-  - However, when attempting to turn Bluetooth on from the Control Center or System Settings, it momentarily switches on and immediately reverts back to off.
-  - This is a known firmware handshake/USB internal port mapping timing behavior in modern macOS releases and is queued for resolution in upcoming commits.
+- 🚀 **First-Class 13th Gen Raptor Lake-P Graphics Acceleration:**
+  With **WhateverXe 0.8.3**, PCI ID `0xA7A0` (96 Execution Units) achieves full Metal 2 acceleration, fluid animations, transparent liquid blurs, and 1536 MB dynamic VRAM.
+- ☀️ **Native Control Center Display Brightness:**
+  Hardware AUX brightness is negotiated natively with the laptop's internal eDP display. No dummy third-party brightness utilities required!
+- 💤 **Lid Sensor (Hall Sensor) Sleep & Wake:**
+  Closing the laptop lid triggers sleep; opening the lid wakes the display immediately without display blackout or GPU hang.
+- 📶 **Native Airport Wi-Fi (No Third-Party App):**
+  Uses `AirportItlwm.kext` (v2.4.0) with `AMFIPass.kext` to populate the native macOS Wi-Fi picker in the status bar and Control Center. No external helper like HeliPort is needed.
+- ⚡ **Full 20-Thread Core i9 Turbo:**
+  `CpuTopologyRebuild.kext` ensures all 6 Performance Cores and 8 Efficiency Cores are scheduled optimally up to 5.40 GHz.
 
 ---
 
 ## 🔧 BIOS Settings
 
-Before booting OpenCore, configure your Huawei BIOS:
+Before booting OpenCore, enter your Huawei BIOS (**F2 on startup**) and set:
 
 | Setting | Value | Why |
 | :--- | :--- | :--- |
@@ -82,74 +81,34 @@ Before booting OpenCore, configure your Huawei BIOS:
 
 ---
 
-## 🚀 Installation Guide
+## 🚀 Installation & EFI Setup
 
-### 1. Preparing the USB Installer
-1. Create a bootable macOS USB installer using **macrecovery** or **gibMacOS** (macOS Sonoma 14.x, macOS Sequoia 15.x, or macOS Tahoe).
-2. Format the USB drive with `GPT` (GUID Partition Table) and `FAT32` or `Mac OS Extended (Journaled)`.
-
-### 2. Installing the EFI
-1. Download or clone this repository:
+### Option A: Using the Pre-Configured EFI
+1. Download the complete EFI from the [Releases](https://github.com/akiffurkan/Huawei-MateBook-D16-Hackintosh-Guide/releases) section or clone this repository:
    ```bash
    git clone https://github.com/akiffurkan/Huawei-MateBook-D16-Hackintosh-Guide.git
    ```
-2. Copy the `EFI` folder from this repository directly to the root of your USB drive's EFI partition.
+2. Copy the `EFI` folder to the EFI partition (ESP) of your USB drive or SSD.
+3. Generate your own unique SMBIOS serials before logging into Apple ID.
 
-### 3. Generating Your Own Serial Numbers (Important!)
+### Option B: Generating SMBIOS Serials
 > [!IMPORTANT]
-> The included `config.plist` is pre-sanitized with dummy serial numbers (`C02XXXXXXXXX`) to protect user privacy. You **must** generate your own credentials before signing into Apple ID / iCloud:
+> The included `config.plist` is pre-sanitized with dummy serial numbers (`C02XXXXXXXXX`) to protect user privacy. Generate your own before signing into iCloud:
 
 1. Download [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS).
 2. Run GenSMBIOS and select option `3` (Generate SMBIOS).
-3. Enter model identifier: `MacBookPro16,1` (or `MacBookPro16,4`).
-4. Paste the generated `Type`, `Serial`, `Board Serial (MLB)`, and `SmUUID` into `EFI/OC/config.plist` under:
-   `PlatformInfo -> Generic`.
-
-### 4. Booting & Setup
-1. Insert the USB into the USB-A or USB-C port.
-2. Turn on your laptop while tapping **F12** to open the Boot Menu.
-3. Select the OpenCore UEFI boot entry.
-4. In the OpenCore menu, always choose **Reset NVRAM** on your first boot!
-5. Select **Install macOS** and proceed with formatting your target NVMe APFS partition.
+3. Enter model identifier: `MacBookPro16,1`.
+4. Copy the generated `Type`, `Serial`, `Board Serial (MLB)`, and `SmUUID` into `EFI/OC/config.plist` under `PlatformInfo -> Generic`.
 
 ---
 
-## 💡 Pro-Tips & Technical Notes
+## 🤝 Credits & Acknowledgements
 
-### Why Does "About This Mac" Show 3.00 GHz instead of 5.40 GHz?
-macOS displays the processor's **Base Clock (Temel Saat Hızı)**, which is exactly **3.00 GHz** for the Core i9-13900H. In real MacBooks, Apple displays the base speed (e.g., 2.4 GHz Core i9), but on active load, Intel Speed Shift and `CpuTopologyRebuild` automatically boost your P-cores up to the full **5.40 GHz** turbo ceiling!
-
-### Battery Calibration Note (70,000 mWh)
-Because Apple MacBook Pro batteries are configured for ~60,000 mAh, the battery meter may show 100% until the actual charge drops below 60,000 mAh. Once past this threshold, the percentage and drainage rate reflect real-time usage accurately.
-
----
-
-## 🗺️ Roadmap & Upcoming Commits
-
-- [x] Full CPU hybrid core management (`CpuTopologyRebuild`)
-- [x] OpenCore 1.0.4+ UEFI configuration & ACPI hotpatches
-- [x] Cosmetic CPU name enabler (`RestrictEvents` + `revcpu`)
-- [x] Battery status indicator (`ECEnabler`)
-- [x] Custom ACPI bridge for FocalTech Touchpad (`SSDT-TPD0.aml`)
-- [ ] Finalize FocalTech FTCS1000 GPIO interrupt pin routing
-- [ ] Determine optimum Conexant CX8200 AppleALC Layout-ID
-- [ ] Drop-in WhateverXe update once native Alder Lake / Raptor Lake graphics acceleration is released upstream
-
----
-
-## 🤝 Contributing
-
-Contributions, issues, and pull requests are welcome! If you have the same Huawei MateBook D 16 model and have tested specific layout-ids or ACPI fixes, please open an Issue or PR.
-
----
-
-## 📜 Credits & Acknowledgements
-
-- [Acidanthera](https://github.com/acidanthera) for OpenCore, Lilu, VirtualSMC, AppleALC, RestrictEvents, and VoodooPS2.
-- [Alexandred](https://github.com/VoodooI2C/VoodooI2C) for VoodooI2C and VoodooI2CHID.
-- [b00t0x](https://github.com/b00t0x) for `CpuTopologyRebuild`.
-- [1Revenger1](https://github.com/1Revenger1) & [ChefKissInc](https://github.com/ChefKissInc) for `ECEnabler` and `NootedRed` / `WhateverXe`.
-- [OpenIntelWireless](https://github.com/OpenIntelWireless) for `AirportItlwm` and `IntelBluetoothFirmware`.
+- **[b00t0x](https://github.com/b00t0x)** for the revolutionary `WhateverXe` and `CpuTopologyRebuild` projects.
+- **[Acidanthera](https://github.com/acidanthera)** for OpenCore, Lilu, VirtualSMC, AppleALC, RestrictEvents, and VoodooPS2.
+- **[OpenIntelWireless](https://github.com/OpenIntelWireless)** for `AirportItlwm` and `IntelBluetoothFirmware`.
+- **[1Revenger1](https://github.com/1Revenger1)** for `ECEnabler`.
+- **[Akif Furkan EMİR](https://github.com/akiffurkan)** for MateBook D16 ACPI engineering, WhateverXe 0xA7A0 fork bench, and repository guide.
 
 ---
 
