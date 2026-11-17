@@ -1,7 +1,7 @@
 # 🍎 Huawei MateBook D 16 (2023/2024) Hackintosh Rehberi
 
 <p align="center">
-  <img src="docs/banner.png" width="100%" alt="Huawei MateBook D16 Hackintosh - macOS Tahoe Intel Iris Xe Graphics 1536MB Metal 2"/>
+  <img src="docs/hero_macos_tahoe_xe_metal2.jpg" width="100%" alt="Huawei MateBook D16 Hackintosh - macOS Tahoe Intel Iris Xe Graphics 1536MB Metal 2"/>
 </p>
 
 <p align="center">
