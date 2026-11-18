@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20251212 (32-bit version)
+ * AML/ASL+ Disassembler version 20250807 (32-bit version)
  * Copyright (c) 2000 - 2025 Intel Corporation
  * 
  * Disassembling to symbolic ASL+ operators
  *
- * Disassembly of H:/EFI/OC/ACPI/SSDT-XOSI.aml
+ * Disassembly of D:/Hackintosh D16/repo_staging/EFI/OC/ACPI/SSDT-XOSI.aml
  *
  * Original Table Header:
  *     Signature        "SSDT"
