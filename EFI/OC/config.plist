@@ -106,7 +106,7 @@
 				<key>Comment</key>
 				<string>Enable I2C Trackpad (FTCS1000) under I2C0</string>
 				<key>Enabled</key>
-				<true/>
+				<false/>
 				<key>Path</key>
 				<string>SSDT-TPD0.aml</string>
 			</dict>
@@ -437,7 +437,7 @@
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
-				<true/>
+				<false/>
 				<key>Find</key>
 				<data>
 				VFBEMA==
@@ -675,6 +675,13 @@
 	<dict>
 		<key>Add</key>
 		<dict>
+			<key>PciRoot(0x0)/Pci(0x1F,0x3)</key>
+			<dict>
+				<key>layout-id</key>
+				<data>
+				FQAAAA==
+				</data>
+			</dict>
 			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
 			<dict>
 				<key>framebuffer-patch-enable</key>
@@ -693,13 +700,6 @@
 				<key>built-in</key>
 				<data>
 				AQAAAA==
-				</data>
-			</dict>
-			<key>PciRoot(0x0)/Pci(0x1F,0x3)</key>
-			<dict>
-				<key>layout-id</key>
-				<data>
-				AwAAAA==
 				</data>
 			</dict>
 		</dict>
@@ -1762,7 +1762,7 @@
 				AAAAAAAAAAAAAAAAAAA=
 				</data>
 				<key>boot-args</key>
-				<string>-v debug=0x100 keepsyms=1 -allow3d -disablegfxfirmware -igfxdvmt -vi2c-force-polling ctrsmt=full -no_compat_check panic=0 ipc_control_port_options=0 amfi=0x80 alcid=3</string>
+				<string>-v debug=0x100 keepsyms=1 -allow3d -disablegfxfirmware -igfxdvmt -vi2c-force-polling ctrsmt=full -no_compat_check panic=0 ipc_control_port_options=0 amfi=0x80 alcid=21 alc-verbs=1</string>
 				<key>csr-active-config</key>
 				<data>
 				AwoAAA==

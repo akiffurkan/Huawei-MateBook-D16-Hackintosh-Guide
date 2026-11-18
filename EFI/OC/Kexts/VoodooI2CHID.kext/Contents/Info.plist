@@ -81,6 +81,12 @@
 			<string>com.alexandred.VoodooI2CHID</string>
 			<key>IOClass</key>
 			<string>VoodooI2CHIDDevice</string>
+			<key>IONameMatch</key>
+			<array>
+				<string>FTCS1000</string>
+				<string>FTCS100</string>
+				<string>PNP0C50</string>
+			</array>
 			<key>IOProbeScore</key>
 			<integer>100</integer>
 			<key>IOPropertyMatch</key>
