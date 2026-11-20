@@ -675,7 +675,7 @@
 			<dict>
 				<key>layout-id</key>
 				<data>
-				AwAAAA==
+				FQAAAA==
 				</data>
 			</dict>
 			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
@@ -1758,7 +1758,7 @@
 				AAAAAAAAAAAAAAAAAAA=
 				</data>
 				<key>boot-args</key>
-				<string>-v debug=0x100 keepsyms=1 -allow3d -disablegfxfirmware -igfxdvmt ctrsmt=full -no_compat_check panic=0 ipc_control_port_options=0 amfi=0x80 alcid=3 alc-verbs=1 -vi2c-force-polling</string>
+				<string>-v debug=0x100 keepsyms=1 -allow3d -disablegfxfirmware -igfxdvmt ctrsmt=full -no_compat_check panic=0 ipc_control_port_options=0 amfi=0x80 alcid=21 alc-verbs=1 -vi2c-force-polling</string>
 				<key>csr-active-config</key>
 				<data>
 				AwoAAA==

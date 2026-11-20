@@ -1,6 +1,7 @@
 DefinitionBlock ("", "SSDT", 2, "HACK", "TPD0", 0x00000000)
 {
     External (_SB_.PC00.TPD0, DeviceObj)
+    External (_SB_.PC00.TPD0.XCRS, MethodObj)
 
     Scope (\_SB.PC00.TPD0)
     {
@@ -14,7 +15,14 @@ DefinitionBlock ("", "SSDT", 2, "HACK", "TPD0", 0x00000000)
 
         Method (_CRS, 0, NotSerialized)
         {
-            Return (SBFB)
+            If (_OSI ("Darwin"))
+            {
+                Return (SBFB)
+            }
+            Else
+            {
+                Return (\_SB.PC00.TPD0.XCRS ())
+            }
         }
     }
 }
