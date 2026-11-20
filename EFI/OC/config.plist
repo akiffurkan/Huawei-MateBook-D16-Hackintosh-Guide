@@ -106,7 +106,7 @@
 				<key>Comment</key>
 				<string>Enable I2C Trackpad (FTCS1000) under I2C0</string>
 				<key>Enabled</key>
-				<false/>
+				<true/>
 				<key>Path</key>
 				<string>SSDT-TPD0.aml</string>
 			</dict>
@@ -437,7 +437,7 @@
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
-				<false/>
+				<true/>
 				<key>Find</key>
 				<data>
 				VFBEMA==
@@ -862,7 +862,7 @@
 				<key>Comment</key>
 				<string></string>
 				<key>Enabled</key>
-				<true/>
+				<false/>
 				<key>ExecutablePath</key>
 				<string>Contents/MacOS/IntelBTPatcher</string>
 				<key>MaxKernel</key>
@@ -1762,7 +1762,7 @@
 				AAAAAAAAAAAAAAAAAAA=
 				</data>
 				<key>boot-args</key>
-				<string>-v debug=0x100 keepsyms=1 -allow3d -disablegfxfirmware -igfxdvmt -vi2c-force-polling ctrsmt=full -no_compat_check panic=0 ipc_control_port_options=0 amfi=0x80 alcid=21 alc-verbs=1</string>
+				<string>-v debug=0x100 keepsyms=1 -allow3d -disablegfxfirmware -igfxdvmt ctrsmt=full -no_compat_check panic=0 ipc_control_port_options=0 amfi=0x80 alcid=21 alc-verbs=1</string>
 				<key>csr-active-config</key>
 				<data>
 				AwoAAA==

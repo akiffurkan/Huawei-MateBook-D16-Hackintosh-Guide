@@ -56,7 +56,7 @@ DefinitionBlock ("", "SSDT", 2, "HACK", "TPD0", 0x00000000)
                     "\\_SB.GPI0", 0x00, ResourceConsumer, ,
                     )
                     {
-                        0x0000
+                        0x00AD
                     }
             })
 
