@@ -1,7 +1,6 @@
 DefinitionBlock ("", "SSDT", 2, "HACK", "TPD0", 0x00000000)
 {
     External (_SB_.PC00.I2C0, DeviceObj)
-    External (_SB_.GPI0, DeviceObj)
 
     Scope (\_SB.PC00.I2C0)
     {
@@ -50,19 +49,9 @@ DefinitionBlock ("", "SSDT", 2, "HACK", "TPD0", 0x00000000)
                     )
             })
 
-            Name (SBFG, ResourceTemplate ()
-            {
-                GpioInt (Level, ActiveLow, ExclusiveAndWake, PullDefault, 0x0000,
-                    "\\_SB.GPI0", 0x00, ResourceConsumer, ,
-                    )
-                    {
-                        0x00AD
-                    }
-            })
-
             Method (_CRS, 0, NotSerialized)
             {
-                Return (ConcatenateResTemplate (SBFB, SBFG))
+                Return (SBFB)
             }
         }
     }
