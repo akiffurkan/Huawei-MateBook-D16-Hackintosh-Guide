@@ -98,7 +98,7 @@
 				<key>Comment</key>
 				<string>SSDT-XOSI.aml</string>
 				<key>Enabled</key>
-				<true/>
+				<false/>
 				<key>Path</key>
 				<string>SSDT-XOSI.aml</string>
 			</dict>
@@ -106,7 +106,7 @@
 				<key>Comment</key>
 				<string>Enable I2C Trackpad (FTCS1000) under I2C0</string>
 				<key>Enabled</key>
-				<true/>
+				<false/>
 				<key>Path</key>
 				<string>SSDT-TPD0.aml</string>
 			</dict>
@@ -285,7 +285,7 @@
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
-				<true/>
+				<false/>
 				<key>Find</key>
 				<data>
 				X09TSQ==
@@ -361,7 +361,7 @@
 				<key>Count</key>
 				<integer>0</integer>
 				<key>Enabled</key>
-				<true/>
+				<false/>
 				<key>Find</key>
 				<data>
 				TBQUX1NUQQ==
@@ -511,7 +511,7 @@
 				<key>Count</key>
 				<integer>1</integer>
 				<key>Enabled</key>
-				<true/>
+				<false/>
 				<key>Find</key>
 				<data>
 				FEwEX0NSUwA=
@@ -1758,7 +1758,7 @@
 				AAAAAAAAAAAAAAAAAAA=
 				</data>
 				<key>boot-args</key>
-				<string>-v debug=0x100 keepsyms=1 -allow3d -disablegfxfirmware -igfxdvmt ctrsmt=full -no_compat_check panic=0 ipc_control_port_options=0 amfi=0x80 alcid=21 alc-verbs=1 -vi2c-force-polling</string>
+				<string>-v debug=0x100 keepsyms=1 -allow3d -disablegfxfirmware -igfxdvmt ctrsmt=full -no_compat_check panic=0 ipc_control_port_options=0 amfi=0x80 alcid=21 alc-verbs=1</string>
 				<key>csr-active-config</key>
 				<data>
 				AwoAAA==
