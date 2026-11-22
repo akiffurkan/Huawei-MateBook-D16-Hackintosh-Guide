@@ -23,6 +23,9 @@
 ## 📸 Proof of Success & Screenshots
 
 <p align="center">
+  <img src="docs/screenshot_desktop_tahoe_ferrari.jpg" width="100%" alt="macOS Tahoe 26.7.1 Desktop - MateBook D16 (2024)"/>
+</p>
+<p align="center">
   <img src="docs/screenshot_desktop_gpu_metal.jpg" width="49%" alt="macOS Tahoe on MateBook D16 - Intel Iris Xe 1536MB Metal 2"/>
   <img src="docs/screenshot_control_center_brightness_wifi.jpg" width="49%" alt="Control Center - Native Wi-Fi & Brightness Slider"/>
 </p>

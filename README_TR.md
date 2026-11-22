@@ -23,6 +23,9 @@
 ## 📸 Başarı Kanıtı ve Ekran Görüntüleri
 
 <p align="center">
+  <img src="docs/screenshot_desktop_tahoe_ferrari.jpg" width="100%" alt="macOS Tahoe 26.7.1 Masaüstü - MateBook D16 (2024)"/>
+</p>
+<p align="center">
   <img src="docs/screenshot_desktop_gpu_metal.jpg" width="49%" alt="macOS Tahoe Masaüstü - Intel Iris Xe 1536MB Metal 2"/>
   <img src="docs/screenshot_control_center_brightness_wifi.jpg" width="49%" alt="Denetim Merkezi - Yerel Wi-Fi ve Parlaklık Çubuğu"/>
 </p>
