@@ -679,13 +679,6 @@
 	<dict>
 		<key>Add</key>
 		<dict>
-			<key>PciRoot(0x0)/Pci(0x1F,0x3)</key>
-			<dict>
-				<key>layout-id</key>
-				<data>
-				FQAAAA==
-				</data>
-			</dict>
 			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
 			<dict>
 				<key>framebuffer-patch-enable</key>
@@ -740,7 +733,7 @@
 				<key>Comment</key>
 				<string>Native Audio Engine (CX8200 layout 3)</string>
 				<key>Enabled</key>
-				<true/>
+				<false/>
 				<key>ExecutablePath</key>
 				<string>Contents/MacOS/AppleALC</string>
 				<key>MaxKernel</key>
@@ -1784,7 +1777,7 @@
 				AAAAAAAAAAAAAAAAAAA=
 				</data>
 				<key>boot-args</key>
-				<string>-v debug=0x100 keepsyms=1 -allow3d -disablegfxfirmware -igfxdvmt ctrsmt=full -no_compat_check panic=0 ipc_control_port_options=0 amfi=0x80 alcid=15 -vi2c-force-polling</string>
+				<string>-v debug=0x100 keepsyms=1 -allow3d -disablegfxfirmware -igfxdvmt ctrsmt=full -no_compat_check panic=0 ipc_control_port_options=0 amfi=0x80 </string>
 				<key>csr-active-config</key>
 				<data>
 				AwoAAA==
@@ -2842,3 +2835,4 @@
 	</dict>
 </dict>
 </plist>
+
