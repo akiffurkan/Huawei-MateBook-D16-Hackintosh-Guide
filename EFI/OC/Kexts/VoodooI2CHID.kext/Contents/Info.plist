@@ -81,13 +81,17 @@
 			<string>com.alexandred.VoodooI2CHID</string>
 			<key>IOClass</key>
 			<string>VoodooI2CHIDDevice</string>
+			<key>IONameMatch</key>
+			<array>
+				<string>FTCS1000</string>
+				<string>FTCS100</string>
+				<string>PNP0C50</string>
+				<string>TPD0</string>
+				<string>TPDX</string>
+				<string>BLTP7840</string>
+			</array>
 			<key>IOProbeScore</key>
 			<integer>400</integer>
-			<key>IOPropertyMatch</key>
-			<dict>
-				<key>compatible</key>
-				<string>PNP0C50</string>
-			</dict>
 			<key>IOProviderClass</key>
 			<string>VoodooI2CDeviceNub</string>
 		</dict>
