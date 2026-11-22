@@ -758,7 +758,7 @@
 				<key>Comment</key>
 				<string>SimpleHDA 1.0.0 - restores AppleHDA stack for Tahoe</string>
 				<key>Enabled</key>
-				<true/>
+				<false/>
 				<key>ExecutablePath</key>
 				<string>Contents/MacOS/SimpleHDA</string>
 				<key>MaxKernel</key>
@@ -1784,7 +1784,7 @@
 				AAAAAAAAAAAAAAAAAAA=
 				</data>
 				<key>boot-args</key>
-				<string>-v debug=0x100 keepsyms=1 -allow3d -disablegfxfirmware -igfxdvmt ctrsmt=full -no_compat_check panic=0 ipc_control_port_options=0 amfi=0x80 alcid=15 -vi2c-force-polling</string>
+				<string>-v debug=0x100 keepsyms=1 -allow3d -disablegfxfirmware -igfxdvmt ctrsmt=full -no_compat_check panic=0 ipc_control_port_options=0 amfi=0x80 alcid=15 -vi2c-force-polling -wex-rplp-gt wex-rplp-urb-banks=5 gfxrst=4</string>
 				<key>csr-active-config</key>
 				<data>
 				AwoAAA==
