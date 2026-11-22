@@ -81,15 +81,13 @@
 			<string>com.alexandred.VoodooI2CHID</string>
 			<key>IOClass</key>
 			<string>VoodooI2CHIDDevice</string>
-			<key>IONameMatch</key>
-			<array>
-				<string>FTCS1000</string>
-				<string>FTCS100</string>
-				<string>PNP0C50</string>
-				<string>TPD0</string>
-			</array>
 			<key>IOProbeScore</key>
 			<integer>400</integer>
+			<key>IOPropertyMatch</key>
+			<dict>
+				<key>compatible</key>
+				<string>PNP0C50</string>
+			</dict>
 			<key>IOProviderClass</key>
 			<string>VoodooI2CDeviceNub</string>
 		</dict>
@@ -283,7 +281,7 @@
 			<key>IOClass</key>
 			<string>VoodooI2CMultitouchHIDEventDriver</string>
 			<key>IOProbeScore</key>
-			<integer>200</integer>
+			<integer>400</integer>
 			<key>IOProviderClass</key>
 			<string>IOHIDInterface</string>
 		</dict>
@@ -303,7 +301,7 @@
 			<key>IOClass</key>
 			<string>VoodooI2CPrecisionTouchpadHIDEventDriver</string>
 			<key>IOProbeScore</key>
-			<integer>500</integer>
+			<integer>400</integer>
 			<key>IOProviderClass</key>
 			<string>IOHIDInterface</string>
 			<key>ProcessBluetoothMouseStopsTrackpad</key>
